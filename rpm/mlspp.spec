@@ -62,6 +62,7 @@ Requires:   %{name} = %{version}-%{release}
 
 # >> build post
 make %{?_smp_mflags}
+make %{?_smp_mflags} libs
 # << build post
 
 %install
