@@ -49,7 +49,7 @@ Links:
 # >> build pre
 # << build pre
 
-
+%cmake . 
 make %{?_smp_mflags}
 
 # >> build post
