@@ -17,6 +17,7 @@ URL:        https://codeberg.org/nephros/template
 Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
+BuildRequires:  cmake
 
 %description
 
