@@ -56,10 +56,11 @@ Macros:
 #Patches:
 #  - 'baz'
 PkgBR:
-  - cmake
-#PkgConfigBR:
-#    - ^^^
-Configure: cmake
+  # cmake
+PkgConfigBR:
+    - openssl
+#Configure: cmake
+Configure: none
 Builder: make
 NoIconCache: true
 #BuildArch: noarch
