@@ -55,7 +55,7 @@ PkgConfigBR:
   - openssl
 Configure: cmake
 #Configure: none
-Builder: make
+Builder: none
 NoIconCache: true
 #BuildArch: noarch
 #AutoSubPackages:

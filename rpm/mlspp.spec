@@ -59,16 +59,15 @@ Requires:   %{name} = %{version}-%{release}
 # << build pre
 
 %cmake . 
-make %{?_smp_mflags}
 
 # >> build post
+make %{?_smp_mflags}
 # << build post
 
 %install
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
-%make_install
 
 # >> install post
 # << install post
