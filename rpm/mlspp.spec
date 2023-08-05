@@ -18,6 +18,7 @@ Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  cmake
 
 %description
 

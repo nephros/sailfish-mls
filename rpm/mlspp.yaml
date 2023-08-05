@@ -56,9 +56,9 @@ Macros:
 #Patches:
 #  - 'baz'
 PkgBR:
-  # cmake
+  - cmake
 PkgConfigBR:
-    - openssl
+  - openssl
 #Configure: cmake
 Configure: none
 Builder: make
