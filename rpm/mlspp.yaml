@@ -63,3 +63,11 @@ NoIconCache: true
 Files:
   - '%license LICENSE'
   - '%dir %{_datadir}/%{name}'
+
+SubPackages:
+    - Name:  static
+      Summary: Static library for %{name}
+      Group: Development
+      Files:
+        - '%{_libdir}/*.a'
+# Please replace all "^^^" with valid values, and cleanup this comment line.
