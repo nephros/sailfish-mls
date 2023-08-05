@@ -12,7 +12,7 @@ Summary:    Template Project
 Version:    0.1.0
 Release:    0
 Group:      Applications
-License:    ASL 2.0
+License:    BSD-2-Clause
 URL:        https://codeberg.org/nephros/template
 Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
@@ -24,24 +24,18 @@ BuildRequires:  cmake
 
 
 %if "%{?vendor}" == "chum"
-Title: Template Application
-DeveloperName: Peter G.
-DeveloperLogin: nephros
+Title: MLS++
+DeveloperName: Cisco Systems
+DeveloperLogin: cisco
 PackagedBy: nephros
 Categories:
  - Library
 Custom:
   Repo: https://github.com/cisco/mlspp
-PackageIcon: %{url}/master/icons/%{name}.svg
-Screenshots:
- - %{url}/raw/metadata/screenshots/screenshot1.png
- - %{url}/raw/metadata/screenshots/screenshot2.png
- - %{url}/raw/metadata/screenshots/screenshot3.png
 Links:
   Homepage: %{url}
   Help: %{url}/discussions
   Bugtracker: %{url}/issues
-  Donation: https://openrepos.net/donate
 %endif
 
 
