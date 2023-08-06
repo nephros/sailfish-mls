@@ -7,7 +7,6 @@ Name:       mlspp
 
 # >> macros
 # << macros
-%define keepstatic 1
 
 Summary:    Template Project
 Version:    0.1.0
@@ -39,14 +38,6 @@ Links:
   Bugtracker: %{url}/issues
 %endif
 
-
-%package static
-Summary:    Static library for %{name}
-Group:      Development
-Requires:   %{name} = %{version}-%{release}
-
-%description static
-%{summary}.
 
 %package devel
 Summary:    Development files for %{name}
@@ -88,12 +79,6 @@ rm -rf %{buildroot}
 %dir %{_datadir}/%{name}
 # >> files
 # << files
-
-%files static
-%defattr(-,root,root,-)
-%{_libdir}/*.a
-# >> files static
-# << files static
 
 %files devel
 %defattr(-,root,root,-)
