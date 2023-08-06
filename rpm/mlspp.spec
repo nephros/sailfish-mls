@@ -18,6 +18,8 @@ URL:        https://codeberg.org/nephros/template
 Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  cmake
 
@@ -48,6 +50,14 @@ Requires:   %{name} = %{version}-%{release}
 %description static
 %{summary}.
 
+%package devel
+Summary:    Development files for %{name}
+Group:      Development
+Requires:   %{name} = %{version}-%{release}
+
+%description devel
+%{summary}.
+
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
@@ -73,10 +83,15 @@ rm -rf %{buildroot}
 # >> install post
 # << install post
 
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root,-)
 %license LICENSE
 %dir %{_datadir}/%{name}
+%{_libdir}/*.so.*
 # >> files
 # << files
 
@@ -85,3 +100,10 @@ rm -rf %{buildroot}
 %{_libdir}/*.a
 # >> files static
 # << files static
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/*.so
+%{_includedir}/%{name}/*
+# >> files devel
+# << files devel

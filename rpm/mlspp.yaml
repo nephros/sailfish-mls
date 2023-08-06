@@ -63,6 +63,7 @@ NoIconCache: true
 Files:
   - '%license LICENSE'
   - '%dir %{_datadir}/%{name}'
+  - '%{_libdir}/*.so.*'
 
 SubPackages:
     - Name:  static
@@ -70,4 +71,10 @@ SubPackages:
       Group: Development
       Files:
         - '%{_libdir}/*.a'
-# Please replace all "^^^" with valid values, and cleanup this comment line.
+
+    - Name:  devel
+      Summary: Development files for %{name}
+      Group: Development
+      Files:
+        - '%{_libdir}/*.so'
+        - '%{_includedir}/%{name}/*'
