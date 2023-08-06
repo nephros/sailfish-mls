@@ -67,12 +67,12 @@ Files:
   # '%{_libdir}/*.so.*'
 
 SubPackages:
-    - Name:  static
-      Summary: Static library for %{name}
-      Group: Development
-      Files:
-        - '%{_libdir}/*.a'
-
+#    - Name:  static
+#      Summary: Static library for %{name}
+#      Group: Development
+#      Files:
+#        - '%{_libdir}/*.a'
+#
     - Name:  devel
       Summary: Development files for %{name}
       Group: Development
