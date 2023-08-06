@@ -76,7 +76,6 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %license LICENSE
-%dir %{_datadir}/%{name}
 # >> files
 # << files
 
@@ -84,5 +83,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_libdir}/*.so
 %{_includedir}/%{name}/*
+%{_datadir}/%{name}
 # >> files devel
 # << files devel

@@ -63,7 +63,6 @@ NoIconCache: true
 #  - doc
 Files:
   - '%license LICENSE'
-  - '%dir %{_datadir}/%{name}'
   # '%{_libdir}/*.so.*'
 
 SubPackages:
@@ -79,3 +78,4 @@ SubPackages:
       Files:
         - '%{_libdir}/*.so'
         - '%{_includedir}/%{name}/*'
+        - '%{_datadir}/%{name}'
