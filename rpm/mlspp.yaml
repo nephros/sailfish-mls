@@ -64,7 +64,7 @@ NoIconCache: true
 Files:
   - '%license LICENSE'
   - '%dir %{_datadir}/%{name}'
-  - '%{_libdir}/*.so.*'
+  # '%{_libdir}/*.so.*'
 
 SubPackages:
     - Name:  static
