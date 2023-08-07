@@ -8,20 +8,25 @@ Name:       mlspp
 # >> macros
 # << macros
 
-Summary:    Template Project
+Summary:    Implementation of Messaging Layer Security
 Version:    0.1
 Release:    0
-Group:      Applications
+Group:      Development/Libraries
 License:    BSD-2-Clause
-URL:        https://codeberg.org/nephros/template
+URL:        https://github.com/cisco/mlspp
 Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  cmake
+Provides:   cmake(%{name}-targets)
+Provides:   cmake(%{name}-config)
+Provides:   cmake(%{name}-config-version)
 
 %description
-
+%{summary}.
 
 %if "%{?vendor}" == "chum"
 Title: MLS++
@@ -32,22 +37,13 @@ Categories:
  - Library
 Custom:
   Repo: https://github.com/cisco/mlspp
+  PackagingRepo: https://github.com/nephros/sailfish-mls
 Links:
   Homepage: %{url}
   Help: %{url}/discussions
   Bugtracker: %{url}/issues
 %endif
 
-
-%package devel
-Summary:    Development files for %{name}
-Group:      Development
-Provides:   cmake(%{name}-targets)
-Provides:   cmake(%{name}-config)
-Provides:   cmake(%{name}-config-version)
-
-%description devel
-%{summary}.
 
 %prep
 %setup -q -n %{name}-%{version}/upstream
@@ -81,12 +77,15 @@ rm -rf %{buildroot}
 # popd
 # << install post
 
+%post -p /sbin/ldconfig
 
-%files devel
+%postun -p /sbin/ldconfig
+
+%files
 %defattr(-,root,root,-)
 %license LICENSE
 %{_libdir}/*.so
 %{_includedir}/%{name}/*
 %{_datadir}/%{name}
-# >> files devel
-# << files devel
+# >> files
+# << files

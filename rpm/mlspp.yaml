@@ -1,20 +1,15 @@
 Name: mlspp
-Summary: Template Project
+Summary: Implementation of Messaging Layer Security
 Version: 0.1
 Release: 0
-Group: Applications
+Group: Development/Libraries
 License: BSD-2-Clause
-URL: https://codeberg.org/nephros/template
-SCM: https://codeberg.org/nephros/template
-#URL: https://github.com/nephros/template
-#SCM: https://github.com/nephros/template
-#URL: https://gitlab.com/nephros/template
-#SCM: https://gitlab.com/nephros/template
+URL: https://github.com/cisco/mlspp
+SCM: https://github.com/cisco/mlspp
 Sources:
     - '%{name}-%{version}.tar.gz'
-    # '%{name}.desktop' ## remember to adjust the Macro below...
 Description: |
-
+    %{summary}.
 
     %if "%{?vendor}" == "chum"
     Title: MLS++
@@ -25,6 +20,7 @@ Description: |
      - Library
     Custom:
       Repo: https://github.com/cisco/mlspp
+      PackagingRepo: https://github.com/nephros/sailfish-mls
     Links:
       Homepage: %{url}
       Help: %{url}/discussions
@@ -36,22 +32,16 @@ RpmLintIgnore:
   - 'summary-too-long'
   - 'no-changelogname-tag'
   - 'invalid-url'
-Macros:
-#  - '__cmake_in_source_build;OFF'
-#  - 'foo;bar'
-#  - |
-#    spectacle_bug; hack_fix
-#    # Spectacular spectacle hack:
-#    #   abuse Macros to work around the Macro-deleting bug in 0.32
-#    #   also, add a conditional dep:
-#    %if 0%{?sailfishos_version} >= 30400
-#    BuildRequires: some-package
-#    %endif
+#Macros:
 #Patches:
 #  - 'baz'
+Provides:
+  - cmake(%{name}-targets)
+  - cmake(%{name}-config)
+  - cmake(%{name}-config-version)
 PkgBR:
   - cmake
-  # protobuf-devel
+  # protobuf-devel      # for the client
   # protobuf-lite-devel # for the client
   # grpc-devel          # for the client
   # gflags-devel        # for the client
@@ -59,40 +49,18 @@ PkgBR:
 PkgConfigBR:
   - openssl
 Configure: cmake
-#Configure: none
-#Builder: none
 Builder: make
-NoIconCache: true
-#BuildArch: noarch
-#AutoSubPackages:
-#  - doc
-NoFiles: true
-#Files:
-  # '%license LICENSE'
-  # '%{_libdir}/*.so.*'
+Files:
+  - '%license LICENSE'
+  - '%{_libdir}/*.so'
+  - '%{_includedir}/%{name}/*'
+  - '%{_datadir}/%{name}'
 
-SubPackages:
-#    - Name:  static
-#      Summary: Static library for %{name}
-#      Group: Development
-#      Files:
-#        - '%{_libdir}/*.a'
-#
+#SubPackages:
 ###  TODO: needs gRPC and other deps which are not packaged yet
 #    - Name:  client
 #      Summary: Development files for %{name}
 #      Group: Development
 #      Files:
 #        - '%{_bindir}/%{name}_client'
-    - Name:  devel
-      Summary: Development files for %{name}
-      Group: Development
-      Provides:
-        - cmake(%{name}-targets)
-        - cmake(%{name}-config)
-        - cmake(%{name}-config-version)
-      Files:
-        - '%license LICENSE'
-        - '%{_libdir}/*.so'
-        - '%{_includedir}/%{name}/*'
-        - '%{_datadir}/%{name}'
+
