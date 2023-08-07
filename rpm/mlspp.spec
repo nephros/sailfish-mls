@@ -19,6 +19,7 @@ Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  cmake
+BuildRequires:  protobuf-lite-devel
 
 %description
 

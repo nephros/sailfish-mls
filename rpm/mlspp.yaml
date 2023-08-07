@@ -51,6 +51,8 @@ Macros:
 #  - 'baz'
 PkgBR:
   - cmake
+  # protobuf-devel
+  - protobuf-lite-devel # for the client
 PkgConfigBR:
   - openssl
 Configure: cmake
