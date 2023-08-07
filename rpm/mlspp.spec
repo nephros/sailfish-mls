@@ -61,11 +61,10 @@ Requires:   %{name} = %{version}-%{release}
 make %{?_smp_mflags}
 
 # >> build post
-make %{?_smp_mflags}
-pushd cmd/interop
-%cmake .
-make %{?_smp_mflags}
-popd
+# pushd cmd/interop
+# %cmake .
+# %make_build
+# popd
 # << build post
 
 %install
@@ -75,9 +74,9 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
-pushd cmd/interop
-%make_install
-make %{?_smp_mflags}
+#pushd cmd/interop
+#%make_install
+# popd
 # << install post
 
 %files
