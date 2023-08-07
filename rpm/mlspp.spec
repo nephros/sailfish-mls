@@ -42,7 +42,6 @@ Links:
 %package devel
 Summary:    Development files for %{name}
 Group:      Development
-Requires:   %{name} = %{version}-%{release}
 Provides:   cmake(%{name}-targets)
 Provides:   cmake(%{name}-config)
 Provides:   cmake(%{name}-config-version)
@@ -82,10 +81,6 @@ rm -rf %{buildroot}
 # popd
 # << install post
 
-%files
-%defattr(-,root,root,-)
-# >> files
-# << files
 
 %files devel
 %defattr(-,root,root,-)
