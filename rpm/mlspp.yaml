@@ -52,7 +52,10 @@ Macros:
 PkgBR:
   - cmake
   # protobuf-devel
-  - protobuf-lite-devel # for the client
+  # protobuf-lite-devel # for the client
+  # grpc-devel          # for the client
+  # gflags-devel        # for the client
+  # mlspp-devel         # for the client
 PkgConfigBR:
   - openssl
 Configure: cmake
@@ -74,11 +77,12 @@ SubPackages:
 #      Files:
 #        - '%{_libdir}/*.a'
 #
-    - Name:  client
-      Summary: Development files for %{name}
-      Group: Development
-      Files:
-        - '%{_bindir}/%{name}_client'
+###  TODO: needs gRPC and other deps which are not packaged yet
+#    - Name:  client
+#      Summary: Development files for %{name}
+#      Group: Development
+#      Files:
+#        - '%{_bindir}/%{name}_client'
     - Name:  devel
       Summary: Development files for %{name}
       Group: Development

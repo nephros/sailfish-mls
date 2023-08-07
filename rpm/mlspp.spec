@@ -19,7 +19,6 @@ Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  cmake
-BuildRequires:  protobuf-lite-devel
 
 %description
 
@@ -39,14 +38,6 @@ Links:
   Bugtracker: %{url}/issues
 %endif
 
-
-%package client
-Summary:    Development files for %{name}
-Group:      Development
-Requires:   %{name} = %{version}-%{release}
-
-%description client
-%{summary}.
 
 %package devel
 Summary:    Development files for %{name}
@@ -94,12 +85,6 @@ make %{?_smp_mflags}
 %license LICENSE
 # >> files
 # << files
-
-%files client
-%defattr(-,root,root,-)
-%{_bindir}/%{name}_client
-# >> files client
-# << files client
 
 %files devel
 %defattr(-,root,root,-)
