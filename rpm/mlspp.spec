@@ -43,6 +43,9 @@ Links:
 Summary:    Development files for %{name}
 Group:      Development
 Requires:   %{name} = %{version}-%{release}
+Provides:   cmake(%{name}-targets)
+Provides:   cmake(%{name}-config)
+Provides:   cmake(%{name}-config-version)
 
 %description devel
 %{summary}.
@@ -81,12 +84,12 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%license LICENSE
 # >> files
 # << files
 
 %files devel
 %defattr(-,root,root,-)
+%license LICENSE
 %{_libdir}/*.so
 %{_includedir}/%{name}/*
 %{_datadir}/%{name}

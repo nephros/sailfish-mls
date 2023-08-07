@@ -67,7 +67,7 @@ NoIconCache: true
 #AutoSubPackages:
 #  - doc
 Files:
-  - '%license LICENSE'
+  # '%license LICENSE'
   # '%{_libdir}/*.so.*'
 
 SubPackages:
@@ -86,7 +86,12 @@ SubPackages:
     - Name:  devel
       Summary: Development files for %{name}
       Group: Development
+      Provides:
+        - cmake(%{name}-targets)
+        - cmake(%{name}-config)
+        - cmake(%{name}-config-version)
       Files:
+        - '%license LICENSE'
         - '%{_libdir}/*.so'
         - '%{_includedir}/%{name}/*'
         - '%{_datadir}/%{name}'
