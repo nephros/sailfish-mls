@@ -9,7 +9,7 @@ Name:       mlspp
 # << macros
 
 Summary:    Template Project
-Version:    0.1.0
+Version:    0.1
 Release:    0
 Group:      Applications
 License:    BSD-2-Clause
@@ -39,6 +39,14 @@ Links:
 %endif
 
 
+%package client
+Summary:    Development files for %{name}
+Group:      Development
+Requires:   %{name} = %{version}-%{release}
+
+%description client
+%{summary}.
+
 %package devel
 Summary:    Development files for %{name}
 Group:      Development
@@ -62,6 +70,10 @@ make %{?_smp_mflags}
 
 # >> build post
 make %{?_smp_mflags}
+pushd cmd/interop
+%cmake .
+make %{?_smp_mflags}
+popd
 # << build post
 
 %install
@@ -71,6 +83,9 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
+pushd cmd/interop
+%make_install
+make %{?_smp_mflags}
 # << install post
 
 %files
@@ -78,6 +93,12 @@ rm -rf %{buildroot}
 %license LICENSE
 # >> files
 # << files
+
+%files client
+%defattr(-,root,root,-)
+%{_bindir}/%{name}_client
+# >> files client
+# << files client
 
 %files devel
 %defattr(-,root,root,-)

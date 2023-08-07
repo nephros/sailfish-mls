@@ -1,6 +1,6 @@
 Name: mlspp
 Summary: Template Project
-Version: 0.1.0
+Version: 0.1
 Release: 0
 Group: Applications
 License: BSD-2-Clause
@@ -72,6 +72,11 @@ SubPackages:
 #      Files:
 #        - '%{_libdir}/*.a'
 #
+    - Name:  client
+      Summary: Development files for %{name}
+      Group: Development
+      Files:
+        - '%{_bindir}/%{name}_client'
     - Name:  devel
       Summary: Development files for %{name}
       Group: Development
