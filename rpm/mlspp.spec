@@ -7,6 +7,14 @@ Name:       mlspp
 
 # >> macros
 # << macros
+%define foo bar
+%define spectacle_hack ignore_this
+%bcond_with mlsclient
+%if %{with mlsclient}
+BuildRequires: pkgconf(protobuf)
+BuildRequires: pkgconf(grp)
+BuildRequires: pkgconf(mlspp)
+%endif
 
 Summary:    Implementation of Messaging Layer Security
 Version:    0.1
@@ -21,6 +29,7 @@ Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  cmake
+BuildRequires:  pkgconfig
 Provides:   cmake(%{name}-targets)
 Provides:   cmake(%{name}-config)
 Provides:   cmake(%{name}-config-version)
@@ -45,6 +54,28 @@ Links:
 %endif
 
 
+# >> macros2
+%if %{with mlsclient}
+%package client
+Summary:    Development files for %{name}
+Group:      Development
+Requires:   %{name} = %{version}-%{release}
+
+%endif
+
+%if %{with mlsclient}
+%description client
+%{summary}.
+%endif
+
+%if %{with mlsclient}
+%files client
+%defattr(-,root,root,-)
+%{_bindir}/%{name}_client
+%endif
+# << macros2
+%define bar baz
+
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
@@ -59,25 +90,18 @@ Links:
 # << build pre
 
 %cmake . 
-make %{?_smp_mflags}
 
 # >> build post
-# pushd cmd/interop
-# %cmake .
-# %make_build
-# popd
+%make_build
 # << build post
 
 %install
 rm -rf %{buildroot}
 # >> install pre
-# << install pre
 %make_install
+# << install pre
 
 # >> install post
-#pushd cmd/interop
-#%make_install
-# popd
 # << install post
 
 %post -p /sbin/ldconfig
@@ -91,4 +115,5 @@ rm -rf %{buildroot}
 %{_includedir}/%{name}/*
 %{_datadir}/%{name}
 # >> files
+
 # << files

@@ -32,7 +32,18 @@ RpmLintIgnore:
   - 'summary-too-long'
   - 'no-changelogname-tag'
   - 'invalid-url'
-#Macros:
+Macros2:
+  - 'bar;baz'
+Macros:
+  - 'foo;bar'
+  - |
+    spectacle_hack;ignore_this
+    %bcond_with mlsclient
+    %if %{with mlsclient}
+    BuildRequires: pkgconf(protobuf)
+    BuildRequires: pkgconf(grp)
+    BuildRequires: pkgconf(mlspp)
+    %endif
 #Patches:
 #  - 'baz'
 Provides:
@@ -41,6 +52,7 @@ Provides:
   - cmake(%{name}-config-version)
 PkgBR:
   - cmake
+  - pkgconfig
   # protobuf-devel      # for the client
   # protobuf-lite-devel # for the client
   # grpc-devel          # for the client
@@ -49,7 +61,7 @@ PkgBR:
 PkgConfigBR:
   - openssl >= 1.1.1
 Configure: cmake
-Builder: make
+Builder: none
 Files:
   - '%license LICENSE'
   - '%{_libdir}/*.so'
