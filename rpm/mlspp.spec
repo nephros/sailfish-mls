@@ -11,9 +11,9 @@ Name:       mlspp
 %define spectacle_hack ignore_this
 %bcond_with mlsclient
 %if %{with mlsclient}
-BuildRequires: pkgconf(protobuf)
-BuildRequires: pkgconf(grp)
-BuildRequires: pkgconf(mlspp)
+BuildRequires: pkgconfig(protobuf)
+BuildRequires: pkgconfig(grp)
+BuildRequires: pkgconfig(mlspp)
 %endif
 
 Summary:    Implementation of Messaging Layer Security
