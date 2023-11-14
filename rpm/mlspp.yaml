@@ -47,7 +47,7 @@ PkgBR:
   # gflags-devel        # for the client
   # mlspp-devel         # for the client
 PkgConfigBR:
-  - openssl
+  - openssl >= 1.1.1
 Configure: cmake
 Builder: make
 Files:

@@ -19,7 +19,7 @@ Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  cmake
 Provides:   cmake(%{name}-targets)
 Provides:   cmake(%{name}-config)
@@ -53,8 +53,9 @@ Links:
 
 %build
 # >> build pre
-# for SFOS 3.4:
-sed -i 's/cmake_minimum_required(VERSION 3.12)/cmake_minimum_required(VERSION 3.11)/' CMakeLists.txt
+# for SFOS 3.4, which has cmake 3.11.3.
+# Then again, SFOS 3.4 does not have openssl 1.1 either so this is moot:
+# sed -i 's/cmake_minimum_required(VERSION 3.12)/cmake_minimum_required(VERSION 3.11)/' CMakeLists.txt
 # << build pre
 
 %cmake . 
