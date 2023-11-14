@@ -53,6 +53,8 @@ Links:
 
 %build
 # >> build pre
+# for SFOS 3.4:
+sed -i 's/cmake_minimum_required(VERSION 3.12)/cmake_minimum_required(VERSION 3.11)/' CMakeLists.txt
 # << build pre
 
 %cmake . 
