@@ -13,7 +13,7 @@ Name:       mlspp
 %if %{with mlsclient}
 BuildRequires: pkgconfig(protobuf)
 BuildRequires: pkgconfig(grp)
-BuildRequires: pkgconfig(mlspp)
+BuildRequires: cmake(mlspp-config)
 %endif
 
 Summary:    Implementation of Messaging Layer Security
