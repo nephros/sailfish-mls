@@ -12,7 +12,7 @@ Name:       mlspp
 %bcond_with mlsclient
 %if %{with mlsclient}
 BuildRequires: pkgconfig(protobuf)
-BuildRequires: pkgconfig(grp)
+BuildRequires: pkgconfig(gprc)
 BuildRequires: cmake(mlspp-config)
 %endif
 
