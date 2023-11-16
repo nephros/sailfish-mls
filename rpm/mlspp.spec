@@ -93,6 +93,13 @@ Requires:   %{name} = %{version}-%{release}
 
 # >> build post
 %make_build
+
+%if %{with mlsclient}
+pushd cmd/interop
+%cmake .
+%make_build
+popd
+%endif
 # << build post
 
 %install
@@ -102,6 +109,11 @@ rm -rf %{buildroot}
 # << install pre
 
 # >> install post
+%if %{with mlsclient}
+pushd cmd/interop
+%make_install
+popd
+%endif
 # << install post
 
 %post -p /sbin/ldconfig
