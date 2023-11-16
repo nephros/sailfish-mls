@@ -14,7 +14,7 @@ Release:    0
 Group:      Development/Libraries
 License:    BSD-2-Clause
 URL:        https://github.com/cisco/mlspp
-Source0:    mlspp-%{version}.tar.gz
+Source0:    %{name}-%{version}.tar.gz
 Source1:    mls_client.proto
 Source100:  mls-client.yaml
 Source101:  mls-client-rpmlintrc

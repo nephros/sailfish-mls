@@ -7,7 +7,8 @@ License: BSD-2-Clause
 URL: https://github.com/cisco/mlspp
 SCM: https://github.com/cisco/mlspp
 Sources:
-    - 'mlspp-%{version}.tar.gz'
+    # 'mlspp-%{version}.tar.gz'
+    - '%{name}-%{version}.tar.gz'
     - 'mls_client.proto' # from https://github.com/mlswg/mls-implementations/interop/proto/mls_client.proto
 Patches:
   - 'proto_not_from_git.patch'
