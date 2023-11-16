@@ -45,7 +45,7 @@ Macros:
     BuildRequires: pkgconfig(grpc)
     Buildrequires: pkgconfig(gflags)
     BuildRequires: cmake(mlspp-config)
-    BuildRequires: pkgconfig(mlohmann_json)
+    BuildRequires: pkgconfig(nlohmann_json)
     %endif
 #Patches:
 #  - 'baz'
