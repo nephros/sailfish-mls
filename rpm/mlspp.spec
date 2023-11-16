@@ -28,6 +28,7 @@ URL:        https://github.com/cisco/mlspp
 Source0:    %{name}-%{version}.tar.gz
 Source100:  mlspp.yaml
 Source101:  mlspp-rpmlintrc
+Patch0:     proto_not_from_git.patch
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
@@ -82,6 +83,8 @@ Requires:   %{name} = %{version}-%{release}
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
+# proto_not_from_git.patch
+%patch0 -p1
 # >> setup
 # << setup
 

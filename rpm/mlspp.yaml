@@ -47,8 +47,8 @@ Macros:
     BuildRequires: cmake(mlspp-config)
     BuildRequires: pkgconfig(nlohmann_json)
     %endif
-#Patches:
-#  - 'baz'
+Patches:
+  - 'proto_not_from_git.patch'
 Provides:
   - cmake(%{name}-targets)
   - cmake(%{name}-config)
