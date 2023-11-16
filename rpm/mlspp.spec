@@ -16,7 +16,7 @@ BuildRequires: pkgconfig(protobuf-lite)
 BuildRequires: pkgconfig(grpc)
 Buildrequires: pkgconfig(gflags)
 BuildRequires: cmake(mlspp-config)
-BuildRequires: pkgconfig(mlohmann_json)
+BuildRequires: pkgconfig(nlohmann_json)
 %endif
 
 Summary:    Implementation of Messaging Layer Security
