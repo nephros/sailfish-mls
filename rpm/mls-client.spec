@@ -49,27 +49,6 @@ Links:
 %endif
 
 
-# >> macros2
-%if %{with mlsclient}
-%package client
-Summary:    Development files for %{name}
-Group:      Development
-Requires:   %{name} = %{version}-%{release}
-
-%endif
-
-%if %{with mlsclient}
-%description client
-%{summary}.
-%endif
-
-%if %{with mlsclient}
-%files client
-%defattr(-,root,root,-)
-%{_bindir}/%{name}_client
-%endif
-# << macros2
-
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
