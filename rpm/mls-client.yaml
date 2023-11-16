@@ -1,4 +1,4 @@
-Name: mlspp
+Name: mls-client
 Summary: Implementation of Messaging Layer Security
 Version: 0.1
 Release: 0
@@ -7,17 +7,20 @@ License: BSD-2-Clause
 URL: https://github.com/cisco/mlspp
 SCM: https://github.com/cisco/mlspp
 Sources:
-    - '%{name}-%{version}.tar.gz'
+    - 'mlspp-%{version}.tar.gz'
+    - 'mls_client.proto' # from https://github.com/mlswg/mls-implementations/interop/proto/mls_client.proto
+Patches:
+  - 'proto_not_from_git.patch'
 Description: |
     %{summary}.
 
     %if "%{?vendor}" == "chum"
-    Title: MLS++
+    Title: MLS Client
     DeveloperName: Cisco Systems
     DeveloperLogin: cisco
     PackagedBy: nephros
     Categories:
-     - Library
+     - Utility
     Custom:
       Repo: https://github.com/cisco/mlspp
       PackagingRepo: https://github.com/nephros/sailfish-mls
@@ -32,20 +35,19 @@ RpmLintIgnore:
   - 'summary-too-long'
   - 'no-changelogname-tag'
   - 'invalid-url'
-Provides:
-  - cmake(%{name}-targets)
-  - cmake(%{name}-config)
-  - cmake(%{name}-config-version)
 PkgBR:
   - cmake
   - pkgconfig
+  - cmake(mlspp-config)
 PkgConfigBR:
   - openssl >= 1.1.1
+  - protobuf
+  - protobuf-lite
+  - grpc
+  - gflags
+  - nlohmann_json
 Configure: cmake
 Builder: none
 Files:
   - '%license LICENSE'
-  - '%{_libdir}/*.so'
-  - '%{_includedir}/%{name}/*'
-  - '%{_datadir}/%{name}'
-
+  - '%{_bindir}/%{name}_client'
