@@ -14,8 +14,8 @@ Name:       mlspp
 BuildRequires: pkgconfig(protobuf)
 BuildRequires: pkgconfig(protobuf-lite)
 BuildRequires: pkgconfig(grpc)
+Buildrequires: pkgconfig(gflags)
 BuildRequires: cmake(mlspp-config)
-BuildRequires: cmake(gflags-config)
 %endif
 
 Summary:    Implementation of Messaging Layer Security
