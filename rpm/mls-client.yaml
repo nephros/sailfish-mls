@@ -12,7 +12,7 @@ Sources:
     - 'mls_client.proto' # from https://github.com/mlswg/mls-implementations/interop/proto/mls_client.proto
 Patches:
   - 'proto_not_from_git.patch'
-  - 'client-grpc.patch'
+  # 'client-grpc.patch'
 Description: |
     %{summary}.
 
@@ -49,6 +49,8 @@ PkgConfigBR:
   - gflags
   - nlohmann_json
 Configure: cmake
+ConfigOptions:
+  - '-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=TRUE'
 Builder: none
 Files:
   - '%license LICENSE'
