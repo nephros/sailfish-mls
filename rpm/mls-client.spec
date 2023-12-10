@@ -19,6 +19,7 @@ Source1:    mls_client.proto
 Source100:  mls-client.yaml
 Source101:  mls-client-rpmlintrc
 Patch0:     proto_not_from_git.patch
+Patch1:     client-grpc.patch
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(protobuf-lite)
@@ -54,6 +55,8 @@ Links:
 
 # proto_not_from_git.patch
 %patch0 -p1
+# client-grpc.patch
+%patch1 -p1
 # >> setup
 # << setup
 
@@ -88,5 +91,4 @@ popd
 %license LICENSE
 %{_bindir}/%{name}_client
 # >> files
-
 # << files
